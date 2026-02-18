@@ -35,7 +35,7 @@ jobs:
         directory: .
         framework: terraform
         output_format: sarif
-        skip_check: CKV_TF_1,CKV2_AWS_34,BC_AWS_378
+        skip_check: CKV_TF_1,CKV2_AWS_34,CKV_AWS_378
 
   terraform-format-validate:
     runs-on: ubuntu-latest
