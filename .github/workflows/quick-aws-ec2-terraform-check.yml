@@ -1,4 +1,4 @@
-name: 'Terraform Format and Validate'
+name: 'quick-aws-ec2-terraform-check'
 
 on:
   push:
