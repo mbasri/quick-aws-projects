@@ -24,7 +24,7 @@ output:
 
     [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-    Terraform project which create VPC and EC2 resource on AWS from scratch.
+    Terraform project which create S3 linked to a SQS queue to index S3 objects metadata in the queue. The project also creates a Lambda function which is triggered by new messages in the SQS queue.
 
     ## *Create and destroy the infrastructure*
 
