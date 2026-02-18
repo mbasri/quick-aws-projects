@@ -2,7 +2,7 @@
 # Security Group for EC2
 #---------------------------------------------------------------------------------------------------
 module "security-group-ec2" {
-  source = "git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-security-group?ref=v1.3.1"
+  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-security-group?ref=v1.3.1"
 
   vpc_id = module.vpc.vpc_id
 
@@ -43,7 +43,7 @@ module "security-group-ec2" {
 # Security Group for ALB
 #---------------------------------------------------------------------------------------------------
 module "security-group-alb" {
-  source = "git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-security-group?ref=v1.2.0"
+  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-security-group?ref=v1.2.0"
 
   vpc_id = module.vpc.vpc_id
 

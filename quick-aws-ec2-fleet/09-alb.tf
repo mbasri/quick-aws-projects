@@ -26,7 +26,7 @@ resource "aws_lb_target_group" "this" {
 # Auto Scaling Group
 #---------------------------------------------------------------------------------------------------
 module "alb" {
-  source = "git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-alb?ref=v1.1.1"
+  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-alb?ref=v1.1.1"
 
   alb_name = local.alb_name
 

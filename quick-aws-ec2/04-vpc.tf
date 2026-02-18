@@ -2,7 +2,7 @@
 # VPC
 #---------------------------------------------------------------------------------------------------
 module "vpc" {
-  source = "git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-vpc?ref=v1.8.2"
+  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-vpc?ref=v1.8.2"
 
   vpc_name = local.vpc_name
 

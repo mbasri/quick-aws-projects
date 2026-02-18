@@ -129,9 +129,9 @@ terraform-docs -c .terraform-docs.yml .
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_eks"></a> [eks](#module\_eks) | git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-eks | n/a |
-| <a name="module_kms"></a> [kms](#module\_kms) | git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-kms | v1.4.0 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-vpc | v1.8.0 |
+| <a name="module_eks"></a> [eks](#module\_eks) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-eks | n/a |
+| <a name="module_kms"></a> [kms](#module\_kms) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-kms | v1.4.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-vpc | v1.8.0 |
 
 ## Resources
 

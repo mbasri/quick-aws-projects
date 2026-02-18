@@ -55,13 +55,13 @@ terraform-docs -c .terraform-docs.yml .
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_alb"></a> [alb](#module\_alb) | git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-alb | v1.1.1 |
-| <a name="module_autoscaling"></a> [autoscaling](#module\_autoscaling) | git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-autoscaling | v1.1.1 |
-| <a name="module_iam-instance-profile"></a> [iam-instance-profile](#module\_iam-instance-profile) | git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-iam-instance-profile | v1.3.1 |
-| <a name="module_kms"></a> [kms](#module\_kms) | git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-kms | v1.4.1 |
-| <a name="module_security-group-alb"></a> [security-group-alb](#module\_security-group-alb) | git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-security-group | v1.2.0 |
-| <a name="module_security-group-ec2"></a> [security-group-ec2](#module\_security-group-ec2) | git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-security-group | v1.3.1 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-vpc | v1.8.2 |
+| <a name="module_alb"></a> [alb](#module\_alb) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-alb | v1.1.1 |
+| <a name="module_autoscaling"></a> [autoscaling](#module\_autoscaling) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-autoscaling | v1.1.1 |
+| <a name="module_iam-instance-profile"></a> [iam-instance-profile](#module\_iam-instance-profile) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-iam-instance-profile | v1.3.1 |
+| <a name="module_kms"></a> [kms](#module\_kms) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-kms | v1.4.1 |
+| <a name="module_security-group-alb"></a> [security-group-alb](#module\_security-group-alb) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-security-group | v1.2.0 |
+| <a name="module_security-group-ec2"></a> [security-group-ec2](#module\_security-group-ec2) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-security-group | v1.3.1 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-vpc | v1.8.2 |
 
 ## Resources
 

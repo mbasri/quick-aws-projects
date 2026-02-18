@@ -63,11 +63,11 @@ terraform-docs -c .terraform-docs.yml .
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_ec2"></a> [ec2](#module\_ec2) | git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-ec2 | v1.3.1 |
-| <a name="module_iam-instance-profile"></a> [iam-instance-profile](#module\_iam-instance-profile) | git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-iam-instance-profile | v1.3.1 |
-| <a name="module_kms"></a> [kms](#module\_kms) | git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-kms | v1.4.1 |
-| <a name="module_security-group"></a> [security-group](#module\_security-group) | git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-security-group | v1.3.1 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-vpc | v1.8.2 |
+| <a name="module_ec2"></a> [ec2](#module\_ec2) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-ec2 | v1.3.1 |
+| <a name="module_iam-instance-profile"></a> [iam-instance-profile](#module\_iam-instance-profile) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-iam-instance-profile | v1.3.1 |
+| <a name="module_kms"></a> [kms](#module\_kms) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-kms | v1.4.1 |
+| <a name="module_security-group"></a> [security-group](#module\_security-group) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-security-group | v1.3.1 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-vpc | v1.8.2 |
 
 ## Resources
 

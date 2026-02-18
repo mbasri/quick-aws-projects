@@ -2,7 +2,7 @@
 # Auto Scaling Group
 #---------------------------------------------------------------------------------------------------
 module "autoscaling" {
-  source = "git::https://gitlab.com/mbasri-terraform/modules/aws/terraform-aws-autoscaling?ref=v1.1.1"
+  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-autoscaling?ref=v1.1.1"
 
   autoscaling_name = local.autoscaling_name
 
