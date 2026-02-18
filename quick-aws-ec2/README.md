@@ -10,8 +10,8 @@ Terraform project which create VPC and EC2 resource on AWS from scratch.
 ### 1. Create infrastructure
 
 ```shell
-git clone https://github.com/mbasri/quick-aws-ec2.git
-cd quick-aws-ec2
+git clone https://github.com/mbasri/quick-aws-projects.git
+cd quick-aws-projects/quick-aws-ec2
 terraform init
 terraform apply
 ```
@@ -19,8 +19,8 @@ terraform apply
 ### 2. Destroy infrastructure
 
 ```shell
-git clone https://github.com/mbasri/quick-aws-ec2.git
-cd quick-aws-ec2
+git clone https://github.com/mbasri/quick-aws-projects.git
+cd quick-aws-projects/quick-aws-ec2
 terraform init
 terraform destroy
 ```
@@ -57,7 +57,7 @@ terraform-docs -c .terraform-docs.yml .
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 6.27.0 |
 | <a name="provider_cloudinit"></a> [cloudinit](#provider\_cloudinit) | 2.3.7 |
-| <a name="provider_local"></a> [local](#provider\_local) | 2.6.1 |
+| <a name="provider_local"></a> [local](#provider\_local) | 2.7.0 |
 
 ## Modules
 

@@ -30,7 +30,7 @@ locals {
     "security:encryption"     = "true",
 
     "technical:terraform"                     = "true",
-    "technical:terraform:scm"                 = "https://github.com/mbasri/quick-aws-ec2-fleet.git",
+    "technical:terraform:scm"                 = "https://github.com/mbasri/quick-aws-projects",
     "technical:terraform:required-version"    = "1.14.3",
     "technical:provider:aws:required-version" = "6.27.0"
   }

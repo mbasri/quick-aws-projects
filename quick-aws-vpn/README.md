@@ -15,8 +15,8 @@ You can use this project to generate certificates: [generate-custom-certificates
 ### 3. Create infrastructure
 
 ```shell
-git clone https://github.com/mbasri/quick-aws-vpn.git
-cd quick-aws-vpn
+git clone https://github.com/mbasri/quick-aws-projects.git
+cd quick-aws-projects/quick-aws-vpn
 terraform init
 terraform apply -target module.vpc
 terraform apply
@@ -25,8 +25,8 @@ terraform apply
 ### 4. Destroy infrastructure
 
 ```shell
-git clone https://github.com/mbasri/quick-aws-vpn.git
-cd quick-aws-vpn
+git clone https://github.com/mbasri/quick-aws-projects.git
+cd quick-aws-projects/quick-aws-vpn
 terraform init
 terraform destroy
 ```

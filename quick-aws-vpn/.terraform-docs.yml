@@ -36,8 +36,8 @@ output:
     ### 3. Create infrastructure
 
     ```shell
-    git clone https://github.com/mbasri/quick-aws-vpn.git
-    cd quick-aws-vpn
+    git clone https://github.com/mbasri/quick-aws-projects.git
+    cd quick-aws-projects/quick-aws-vpn
     terraform init
     terraform apply -target module.vpc
     terraform apply
@@ -46,8 +46,8 @@ output:
     ### 4. Destroy infrastructure
 
     ```shell
-    git clone https://github.com/mbasri/quick-aws-vpn.git
-    cd quick-aws-vpn
+    git clone https://github.com/mbasri/quick-aws-projects.git
+    cd quick-aws-projects/quick-aws-vpn
     terraform init
     terraform destroy
     ```

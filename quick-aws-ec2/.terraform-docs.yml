@@ -31,8 +31,8 @@ output:
     ### 1. Create infrastructure
 
     ```shell
-    git clone https://github.com/mbasri/quick-aws-ec2.git
-    cd quick-aws-ec2
+    git clone https://github.com/mbasri/quick-aws-projects.git
+    cd quick-aws-projects/quick-aws-ec2
     terraform init
     terraform apply
     ```
@@ -40,8 +40,8 @@ output:
     ### 2. Destroy infrastructure
 
     ```shell
-    git clone https://github.com/mbasri/quick-aws-ec2.git
-    cd quick-aws-ec2
+    git clone https://github.com/mbasri/quick-aws-projects.git
+    cd quick-aws-projects/quick-aws-ec2
     terraform init
     terraform destroy
     ```

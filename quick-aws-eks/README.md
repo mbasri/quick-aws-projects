@@ -11,7 +11,7 @@ Terraform project which create VPC, KMS and EKS resource on AWS from scratch.
 
 ```shell
 git clone https://github.com/mbasri/quick-aws-projects.git
-cd quick-aws-eks
+cd quick-aws-projects/quick-aws-eks
 terraform init
 terraform apply
 ```
@@ -20,7 +20,7 @@ terraform apply
 
 ```shell
 git clone https://github.com/mbasri/quick-aws-projects.git
-cd quick-aws-eks
+cd quick-aws-projects/quick-aws-eks
 terraform init
 terraform destroy
 ```
@@ -38,10 +38,8 @@ aws eks update-kubeconfig --name quick-aws-eks
 ## Deploy ArgoCD
 
 ```bash
-# Install ArgoCD using Kustomize (Method 1)
-kubectl apply --server-side -k quick-aws-eks/manifests.d/k8s.d/argocd/base
-# Install ArgoCD using Kustomize (Method 2)
-kustomize build quick-aws-eks/manifests.d/k8s.d/argocd/base/ | kubectl apply --server-side --force-conflicts -f -
+# Install ArgoCD using Kustomize
+kubectl apply -k quick-aws-eks/manifests.d/k8s.d/argocd/base
 
 # Deploy ArgoCD self-managed application
 kubectl apply -k quick-aws-eks/manifests.d/argocd.d/argocd-self-managed/base
@@ -90,28 +88,28 @@ terraform-docs -c .terraform-docs.yml .
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | 1.14.3 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.27.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.31.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.27.0 |
-| <a name="provider_http"></a> [http](#provider\_http) | 3.5.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.31.0 |
+| <a name="provider_http"></a> [http](#provider\_http) | n/a |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_eks"></a> [eks](#module\_eks) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-eks | n/a |
-| <a name="module_kms"></a> [kms](#module\_kms) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-kms | v1.4.1 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-vpc | v1.8.2 |
+| <a name="module_eks"></a> [eks](#module\_eks) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-eks | v1.1.2 |
+| <a name="module_kms"></a> [kms](#module\_kms) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-kms | v1.5.1 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-vpc | v1.8.3 |
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/6.27.0/docs/data-sources/caller_identity) | data source |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/6.31.0/docs/data-sources/caller_identity) | data source |
 | [http_http.myip](https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) | data source |
 
 ## Inputs

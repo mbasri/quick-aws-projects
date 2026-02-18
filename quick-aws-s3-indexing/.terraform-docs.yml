@@ -20,11 +20,11 @@ output:
   mode: inject
   template: |-
     <!-- BEGIN_TF_DOCS -->
-    # Quick AWS EC2 Fleet
+    # Quick AWS EC2
 
     [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-    Terraform project which create VPC and Auto Scaling Group resource on AWS from scratch.
+    Terraform project which create VPC and EC2 resource on AWS from scratch.
 
     ## *Create and destroy the infrastructure*
 
@@ -32,7 +32,7 @@ output:
 
     ```shell
     git clone https://github.com/mbasri/quick-aws-projects.git
-    cd quick-aws-projects/quick-aws-ec2-fleet
+    cd quick-aws-s3-indexing
     terraform init
     terraform apply
     ```
@@ -41,16 +41,10 @@ output:
 
     ```shell
     git clone https://github.com/mbasri/quick-aws-projects.git
-    cd quick-aws-projects/quick-aws-ec2-fleet
+    cd quick-aws-s3-indexing
     terraform init
     terraform destroy
     ```
-
-    ## *Use the EC2 instance*
-
-    ### 1. Connect to the EC2 instance
-
-    See the Terrafom output 'ssm_session'
 
     ## *Generate docs*
     

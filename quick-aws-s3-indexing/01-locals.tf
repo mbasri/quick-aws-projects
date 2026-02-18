@@ -2,10 +2,10 @@
 # locals variables
 #---------------------------------------------------------------------------------------------------
 locals {
-  name   = "quick-aws-ec2"
+  name   = "quick-aws-s3-indexing"
   region = "eu-west-3"
 
-  description = "Quick AWS EC2"
+  description = "Quick AWS S3 Indexing"
 
   kms_name                  = local.name
   vpc_name                  = local.name
@@ -16,11 +16,11 @@ locals {
 
   tags = {
     "Name"        = local.name,
-    "Description" = "Quick AWS EC2",
+    "Description" = "Quick AWS S3 Indexing",
 
     "billing:organisation"      = "mbasri",
     "billing:organisation-unit" = "labs",
-    "billing:application"       = "quick-aws-ec2",
+    "billing:application"       = "quick-aws-s3-indexing",
     "billing:environment"       = "dev",
 
     "security:compliance"     = "HIPAA",
