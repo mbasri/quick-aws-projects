@@ -1,9 +1,9 @@
-name: 'quick-aws-ec2 terraform check'
+name: 'quick-aws-ec2-fleet terraform check'
 
 on:
   push:
     paths:
-      - 'quick-aws-ec2/**'
+      - 'quick-aws-ec2-fleet/**'
     # paths-ignore:
     #   - '**.md'
     branches: [ main, dev ]
@@ -22,7 +22,7 @@ jobs:
       uses: actions/checkout@v6
      
     - name: Change Directory
-      run: cd quick-aws-ec2
+      run: cd quick-aws-ec2-fleet
 
     - name: Install Terraform
       uses: hashicorp/setup-terraform@v3
@@ -46,7 +46,7 @@ jobs:
       uses: actions/checkout@v6
 
     - name: Change Directory
-      run: cd quick-aws-ec2
+      run: cd quick-aws-ec2-fleet
    
     - name: Install Terraform
       uses: hashicorp/setup-terraform@v3
