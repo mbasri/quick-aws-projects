@@ -14,6 +14,7 @@ on:
 jobs:
   
   terraform-security:
+    #runs-on: arc-runner-set
     runs-on: ubuntu-latest
     name: Terraform security check
     steps:
