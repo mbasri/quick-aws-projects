@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/mbasri/quick-aws-eks.git
+    repoURL: https://github.com/mbasri/quick-aws-projects.git
     targetRevision: main
-    path: manifests.d/k8s.d/argocd/base
+    path: quick-aws-eks/manifests.d/k8s.d/argocd/base
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd

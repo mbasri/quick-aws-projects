@@ -4,8 +4,8 @@ on:
   push:
     paths:
       - 'quick-aws-ec2/**'
-    paths-ignore:
-      - '**.md'
+    # paths-ignore:
+    #   - '**.md'
     branches: [ main, dev ]
   pull_request:
     branches: [ main ]

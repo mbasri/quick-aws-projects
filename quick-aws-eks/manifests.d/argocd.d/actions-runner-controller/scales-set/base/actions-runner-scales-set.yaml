@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/mbasri/quick-aws-eks
+    repoURL: https://github.com/mbasri/quick-aws-projects
     targetRevision: main
-    path: manifests.d/k8s.d/actions-runner-controller/scales-set/base
+    path: quick-aws-eks/manifests.d/k8s.d/actions-runner-controller/scales-set/base
   destination:
     server: https://kubernetes.default.svc
     namespace: arc-system

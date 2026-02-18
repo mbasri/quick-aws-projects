@@ -10,7 +10,7 @@ Terraform project which create VPC, KMS and EKS resource on AWS from scratch.
 ### 1. Create infrastructure
 
 ```shell
-git clone https://github.com/mbasri/quick-aws-eks.git
+git clone https://github.com/mbasri/quick-aws-projects.git
 cd quick-aws-eks
 terraform init
 terraform apply
@@ -19,7 +19,7 @@ terraform apply
 ### 2. Destroy infrastructure
 
 ```shell
-git clone https://github.com/mbasri/quick-aws-eks.git
+git clone https://github.com/mbasri/quick-aws-projects.git
 cd quick-aws-eks
 terraform init
 terraform destroy
@@ -39,12 +39,12 @@ aws eks update-kubeconfig --name quick-aws-eks
 
 ```bash
 # Install ArgoCD using Kustomize (Method 1)
-kubectl apply --server-side -k manifests.d/k8s.d/argocd/base
+kubectl apply --server-side -k quick-aws-eks/manifests.d/k8s.d/argocd/base
 # Install ArgoCD using Kustomize (Method 2)
-kustomize build manifests.d/k8s.d/argocd/base/ | kubectl apply --server-side --force-conflicts -f -
+kustomize build quick-aws-eks/manifests.d/k8s.d/argocd/base/ | kubectl apply --server-side --force-conflicts -f -
 
 # Deploy ArgoCD self-managed application
-kubectl apply -k manifests.d/argocd.d/argocd-self-managed/base
+kubectl apply -k quick-aws-eks/manifests.d/argocd.d/argocd-self-managed/base
 
 # Get ArgoCD admin password
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
@@ -57,7 +57,7 @@ kubectl -n argocd port-forward svc/argocd-server 8080:443
 
 ```bash
 # Deploy Action Runner Controller self-managed
-kubectl apply -k manifests.d/argocd.d/actions-runner-controller/controller/base
+kubectl apply -k quick-aws-eks/manifests.d/argocd.d/actions-runner-controller/controller/base
 ```
 
 ## Deploy Cluster Autoscaler
