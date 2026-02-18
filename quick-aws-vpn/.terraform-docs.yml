@@ -1,0 +1,96 @@
+formatter: "markdown"
+
+version: ""
+
+header-from: main.tf
+footer-from: ""
+
+recursive:
+  enabled: false
+  path: modules
+
+sections:
+  hide: []
+  show: []
+
+content: ""
+
+output:
+  file: "README.md"
+  mode: inject
+  template: |-
+    <!-- BEGIN_TF_DOCS -->
+    # Quick AWS VPN
+
+    [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+    Terraform project which create VPC and Client VPN resource on AWS from scratch.
+
+    ## *Create and destroy the infrastructure*
+
+    ### 2. Create certificate
+
+    As mentioned in `97-datas.tf`, you need to create your own certificates for the VPN server and clients.
+    You can use this project to generate certificates: [generate-custom-certificates](https://github.com/mbasri/generate-custom-certificates)
+
+    ### 3. Create infrastructure
+
+    ```shell
+    git clone https://github.com/mbasri/quick-aws-vpn.git
+    cd quick-aws-vpn
+    terraform init
+    terraform apply -target module.vpc
+    terraform apply
+    ```
+
+    ### 4. Destroy infrastructure
+
+    ```shell
+    git clone https://github.com/mbasri/quick-aws-vpn.git
+    cd quick-aws-vpn
+    terraform init
+    terraform destroy
+    ```
+
+    And then remove the certificates created in step 2
+
+    ## Generate docs
+    
+    ```shell
+    terraform-docs -c .terraform-docs.yml .
+    ```
+
+    {{ .Content }}
+
+    ## Author
+
+    * [**Mohamed BASRI**](https://github.com/mbasri)
+
+    ## License
+
+    This is free and unencumbered software released into the public domain - see the [LICENSE](./LICENSE) file for details
+
+    <!-- END_TF_DOCS -->
+
+output-values:
+  enabled: false
+  from: ""
+
+sort:
+  enabled: true
+  by: name
+
+settings:
+  anchor: true
+  color: true
+  default: true
+  description: false
+  escape: true
+  hide-empty: false
+  html: true
+  indent: 2
+  lockfile: true
+  read-comments: true
+  required: true
+  sensitive: true
+  type: true
