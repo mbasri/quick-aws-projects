@@ -7,12 +7,12 @@ locals {
 
   description = "Quick AWS S3 Indexing"
 
-  kms_name                  = local.name
-  vpc_name                  = local.name
-  security_group_name       = local.name
-  iam_instance_profile_name = local.name
-  instance_name             = local.name
-  ssm_parameter_name        = local.name
+  kms_name            = local.name
+  sqs_name            = local.name
+  sqs_dlq_name        = "${local.name}-dlq"
+  bucket_name         = local.name
+  dynamodb_table_name = local.name
+  function_name       = local.name
 
   tags = {
     "Name"        = local.name,
