@@ -14,4 +14,4 @@ func init() {
 
 func main() {
 	fmt.Println("Hello from Go Lambda!")
-}
+} 

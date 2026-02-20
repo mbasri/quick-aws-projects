@@ -22,6 +22,9 @@ override.tf.json
 .terraformrc
 terraform.rc
 
+# Lambda build artifacts
+**/outputs.d/*
+
 # Log files
 *.log
 

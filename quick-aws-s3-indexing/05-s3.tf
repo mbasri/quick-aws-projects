@@ -52,4 +52,8 @@ resource "aws_s3_bucket_notification" "object-created" {
     events    = ["s3:ObjectCreated:*"]
     #filter_prefix = ""
   }
+
+  depends_on = [
+    module.sqs
+  ]
 }

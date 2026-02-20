@@ -25,6 +25,16 @@ terraform init
 terraform destroy
 ```
 
+### 3. Build Go Lambda function locally
+
+```shell
+git clone https://github.com/mbasri/quick-aws-projects.git
+cd quick-aws-s3-indexing/src
+GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go mod download
+GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o ./bootstrap main.go
+zip -j lambda.zip bootstrap
+```
+
 ## *Generate docs*
 
 ```shell
