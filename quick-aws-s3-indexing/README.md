@@ -31,9 +31,14 @@ terraform destroy
 git clone https://github.com/mbasri/quick-aws-projects.git
 cd quick-aws-s3-indexing/src
 go get github.com/aws/aws-lambda-go
+go get github.com/aws/aws-sdk-go-v2/service/s3
+go get github.com/aws/aws-sdk-go-v2/service/sqs
+go get github.com/aws/aws-sdk-go-v2/service/dynamodb
 GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go mod download
 GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o ./bootstrap main.go
 chmod 755 ./bootstrap
+
+terraform apply -auto-approve; aws --profile lab s3 cp 00-versions.tf s3://quick-aws-s3-indexing
 ```
 
 ## *Generate docs*

@@ -22,11 +22,7 @@ module "dynamodb" {
       type = "N"
     },
     {
-      name = "objectTimestamp"
-      type = "S"
-    },
-    {
-      name = "lastUpdate"
+      name = "objectTimestampCreated"
       type = "S"
     }
   ]
@@ -34,15 +30,9 @@ module "dynamodb" {
   local_secondary_indexes = [
     {
       name               = "objectTimestampIndex"
-      range_key          = "objectTimestamp"
+      range_key          = "objectTimestampCreated"
       projection_type    = "INCLUDE"
       non_key_attributes = ["objectKey"]
-    },
-    {
-      name               = "lastUpdateIndex"
-      range_key          = "lastUpdate"
-      projection_type    = "ALL"
-      non_key_attributes = []
     }
   ]
 
