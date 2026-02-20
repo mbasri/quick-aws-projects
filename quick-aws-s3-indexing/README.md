@@ -30,9 +30,10 @@ terraform destroy
 ```shell
 git clone https://github.com/mbasri/quick-aws-projects.git
 cd quick-aws-s3-indexing/src
+go get github.com/aws/aws-lambda-go
 GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go mod download
 GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o ./bootstrap main.go
-zip -j lambda.zip bootstrap
+chmod 755 ./bootstrap
 ```
 
 ## *Generate docs*

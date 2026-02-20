@@ -24,6 +24,7 @@ terraform.rc
 
 # Lambda build artifacts
 **/outputs.d/*
+bootstrap
 
 # Log files
 *.log

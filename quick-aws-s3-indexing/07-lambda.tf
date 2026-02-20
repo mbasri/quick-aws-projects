@@ -1,4 +1,37 @@
 #---------------------------------------------------------------------------------------------------
+# Build Go & Create Zip
+#---------------------------------------------------------------------------------------------------
+resource "null_resource" "build" {
+  triggers = {
+    # main_go    = filesha256("${path.module}/src/main.go")
+    # go_mod     = filesha256("${path.module}/src/go.mod")
+    # go_sum     = filesha256("${path.module}/src/go.sum")
+    always_run = timestamp()
+  }
+
+  provisioner "local-exec" {
+    command = <<EOT
+      cd ${path.module}/src
+      GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go mod download
+      GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -o ../outputs.d/bootstrap main.go
+      chmod 755 ../outputs.d/bootstrap
+    EOT
+  }
+}
+
+data "archive_file" "lambda" {
+  type = "zip"
+
+  source_file = "${path.module}/outputs.d/bootstrap"
+  output_path = "${path.module}/outputs.d/lambda.zip"
+
+  depends_on = [
+    null_resource.build
+  ]
+}
+
+
+#---------------------------------------------------------------------------------------------------
 # Create custom policy for Lambda function to convert files to text via AWS Services
 #---------------------------------------------------------------------------------------------------
 # resource "aws_iam_policy" "lambda-indexing" {
@@ -19,7 +52,7 @@
 # Create Lambda function to convert files to text via AWS Services
 #---------------------------------------------------------------------------------------------------
 module "lambda" {
-  #source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-lambda?ref=v2.2.1"
+  #source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-lambda?ref=v2.3.0"
   source = "../../../mbasri-terraform-aws-modules/terraform-aws-lambda"
 
   function_name = local.function_name
@@ -30,7 +63,8 @@ module "lambda" {
   handler = "bootstrap"
   runtime = "provided.al2023"
 
-  filename = "test.zip"
+  filename         = data.archive_file.lambda.output_path
+  source_code_hash = data.archive_file.lambda.output_base64sha256
 
   timeout     = 30
   memory_size = 128
