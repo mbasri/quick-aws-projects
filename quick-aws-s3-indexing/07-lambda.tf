@@ -12,10 +12,10 @@ resource "null_resource" "build" {
   provisioner "local-exec" {
     command = <<EOT
       cd ${path.module}/src
-      mkdir -p ../outputs.d
+      mkdir -p ../tmp.d
       GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go mod download
-      GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -o ../outputs.d/bootstrap main.go
-      chmod 755 ../outputs.d/bootstrap
+      GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -o ../tmp.d/bootstrap main.go
+      chmod 755 ../tmp.d/bootstrap
     EOT
   }
 }
@@ -23,8 +23,8 @@ resource "null_resource" "build" {
 data "archive_file" "lambda" {
   type = "zip"
 
-  source_file = "${path.module}/outputs.d/bootstrap"
-  output_path = "${path.module}/outputs.d/lambda.zip"
+  source_file = "${path.module}/tmp.d/bootstrap"
+  output_path = "${path.module}/tmp.d/lambda.zip"
 
   depends_on = [
     null_resource.build
@@ -53,8 +53,8 @@ resource "aws_iam_policy" "lambda" {
 # Create Lambda function to convert files to text via AWS Services
 #---------------------------------------------------------------------------------------------------
 module "lambda" {
-  #source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-lambda?ref=v2.3.0"
-  source = "../../../mbasri-terraform-aws-modules/terraform-aws-lambda"
+  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-lambda?ref=v2.3.0"
+  #source = "../../../mbasri-terraform-aws-modules/terraform-aws-lambda"
 
   function_name = local.function_name
   description   = local.description

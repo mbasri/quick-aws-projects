@@ -16,7 +16,30 @@ terraform init
 terraform apply
 ```
 
-### 2. Destroy infrastructure
+### 2. Test Lambda function (With sam cli)
+
+```shell
+mkdir -p tmp.d/events
+SAM_CLI_TELEMETRY=0
+
+sam local generate-event s3 put \
+  --bucket my-bucket \
+  --key my-folder/my-file.pdf > tmp.d/events/s3-event.json
+
+sam local generate-event sqs receive-message\
+  --body $(cat tmp.d/events/s3-event.json | jq -c . | sed 's/"/\\"/g') > tmp.d/events/sqs-event.json
+
+sam local invoke --template-file ../sam-template.yaml \
+  QuickAwsS3Indexing --profile lab -e ../tmp.d/events/sqs-event.json
+```
+
+### 3. Build and test Lambda function locally
+
+```shell
+GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -o ../tmp.d/bootstrap main.go; sam local invoke --template-file ../sam-template.yaml QuickAwsS3Indexing --profile lab -e ../tmp.d/events/sqs-event.json
+```
+
+### 4. Destroy infrastructure
 
 ```shell
 git clone https://github.com/mbasri/quick-aws-projects.git
@@ -25,7 +48,7 @@ terraform init
 terraform destroy
 ```
 
-### 3. Build Go Lambda function locally
+### 4. Build Go Lambda function locally
 
 ```shell
 git clone https://github.com/mbasri/quick-aws-projects.git
@@ -34,8 +57,8 @@ go get github.com/aws/aws-lambda-go
 go get github.com/aws/aws-sdk-go-v2/service/s3
 go get github.com/aws/aws-sdk-go-v2/service/sqs
 go get github.com/aws/aws-sdk-go-v2/service/dynamodb
-GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go mod download
-GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o ./bootstrap main.go
+GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go mod download
+GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -o ./bootstrap main.go
 chmod 755 ./bootstrap
 
 terraform apply -auto-approve; aws --profile lab s3 cp 00-versions.tf s3://quick-aws-s3-indexing

@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  QuickAwsS3Indexing:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: tmp.d
+      Handler: bootstrap
+      Runtime: provided.al2023
+      Events:
+        SqsEvent:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt MySqs.QueueName
+      Environment:
+        Variables:
+          BUCKET_NAME: quick-aws-s3-indexing
+          SQS_QUEUE_URL: quick-aws-s3-indexing
+          DYNAMODB_TABLE: quick-aws-s3-indexing
+

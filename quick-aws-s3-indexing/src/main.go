@@ -61,6 +61,12 @@ func handler(ctx context.Context, event events.SQSEvent) () {
 		})
 		
 	}
+
+	fmt.Println("Starting Lambda runtime...")
+	fmt.Println("Starting Lambda runtime...")
+	fmt.Println("Starting Lambda runtime...")
+	fmt.Println("Starting Lambda runtime...")
+	fmt.Println("Starting Lambda runtime...")
 }
 
 func main() {
