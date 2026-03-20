@@ -2,8 +2,7 @@
 # Create EKS
 #---------------------------------------------------------------------------------------------------
 module "eks" {
-  # source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-eks?ref=v1.1.2"
-  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-eks"
+  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-eks?ref=v2.0.0"
 
   cluster_name    = local.eks_name
   cluster_version = "1.35"
