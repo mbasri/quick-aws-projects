@@ -118,36 +118,6 @@ output "cluster_iam_role_unique_id" {
   value       = module.eks.cluster_iam_role_unique_id
 }
 
-output "pod_identity_cluster_autoscaler_name" {
-  description = "Name of the IAM role for EKS Pod Identity used by the Cluster Autoscaler"
-  value       = module.eks.pod_identity_cluster_autoscaler_name
-}
-
-output "pod_identity_cluster_autoscaler_arn" {
-  description = "ARN of the IAM role for EKS Pod Identity used by the Cluster Autoscaler"
-  value       = module.eks.pod_identity_cluster_autoscaler_arn
-}
-
-output "pod_identity_cluster_autoscaler_id" {
-  description = "Unique ID of the IAM role for EKS Pod Identity used by the Cluster Autoscaler"
-  value       = module.eks.pod_identity_cluster_autoscaler_id
-}
-
-output "pod_identity_alb_name" {
-  description = "Name of the IAM role for EKS Pod Identity used by the ALB controller"
-  value       = module.eks.pod_identity_alb_name
-}
-
-output "pod_identity_alb_arn" {
-  description = "ARN of the IAM role for EKS Pod Identity used by the ALB controller"
-  value       = module.eks.pod_identity_alb_arn
-}
-
-output "pod_identity_alb_id" {
-  description = "Unique ID of the IAM role for EKS Pod Identity used by the ALB controller"
-  value       = module.eks.pod_identity_alb_id
-}
-
 # EKS Cluster
 output "cluster_name" {
   description = "Name of the EKS cluster"
@@ -190,39 +160,13 @@ output "cluster_access_entry_admin_arn" {
   value       = module.eks.cluster_access_entry_admin_arn
 }
 
-# Launch Template
-output "launch_template_id" {
-  description = "ID of the created Launch Template"
-  value       = module.eks.launch_template_id
+# Node role (Auto Mode)
+output "node_iam_role_name" {
+  description = "IAM role name used by EKS Auto Mode nodes"
+  value       = module.eks.node_iam_role_name
 }
 
-output "launch_template_arn" {
-  description = "ARN of the created Launch Template"
-  value       = module.eks.launch_template_arn
-}
-
-output "launch_template_latest_version" {
-  description = "Latest version of the created Launch Template"
-  value       = module.eks.launch_template_latest_version
-}
-
-# Node Group
-output "spot_node_group_arn" {
-  description = "ARN of the Spot EKS Node Group"
-  value       = module.eks.spot_node_group_arn
-}
-
-output "spot_node_group_id" {
-  description = "ID of the Spot EKS Node Group"
-  value       = module.eks.spot_node_group_id
-}
-
-output "ondemand_node_group_arn" {
-  description = "ARN of the OnDemand EKS Node Group"
-  value       = module.eks.ondemand_node_group_arn
-}
-
-output "ondemand_node_group_id" {
-  description = "ID of the OnDemand EKS Node Group"
-  value       = module.eks.ondemand_node_group_id
+output "node_iam_role_arn" {
+  description = "IAM role ARN used by EKS Auto Mode nodes"
+  value       = module.eks.node_iam_role_arn
 }

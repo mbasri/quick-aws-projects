@@ -95,15 +95,15 @@ terraform-docs -c .terraform-docs.yml .
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 6.31.0 |
-| <a name="provider_http"></a> [http](#provider\_http) | n/a |
+| <a name="provider_http"></a> [http](#provider\_http) | 3.5.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_eks"></a> [eks](#module\_eks) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-eks | v1.1.2 |
+| <a name="module_eks"></a> [eks](#module\_eks) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-eks | n/a |
 | <a name="module_kms"></a> [kms](#module\_kms) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-kms | v1.5.1 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-vpc | v1.8.3 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-vpc | v1.8.4 |
 
 ## Resources
 
@@ -137,18 +137,9 @@ No inputs.
 | <a name="output_key_arn"></a> [key\_arn](#output\_key\_arn) | The Amazon Resource Name (ARN) of the key |
 | <a name="output_key_id"></a> [key\_id](#output\_key\_id) | Name of the key |
 | <a name="output_key_policy"></a> [key\_policy](#output\_key\_policy) | The IAM resource policy set on the key |
-| <a name="output_launch_template_arn"></a> [launch\_template\_arn](#output\_launch\_template\_arn) | ARN of the created Launch Template |
-| <a name="output_launch_template_id"></a> [launch\_template\_id](#output\_launch\_template\_id) | ID of the created Launch Template |
-| <a name="output_launch_template_latest_version"></a> [launch\_template\_latest\_version](#output\_launch\_template\_latest\_version) | Latest version of the created Launch Template |
 | <a name="output_nat_gateway_public_ips"></a> [nat\_gateway\_public\_ips](#output\_nat\_gateway\_public\_ips) | Private IP of NAT Gateway |
-| <a name="output_ondemand_node_group_arn"></a> [ondemand\_node\_group\_arn](#output\_ondemand\_node\_group\_arn) | ARN of the OnDemand EKS Node Group |
-| <a name="output_ondemand_node_group_id"></a> [ondemand\_node\_group\_id](#output\_ondemand\_node\_group\_id) | ID of the OnDemand EKS Node Group |
-| <a name="output_pod_identity_alb_arn"></a> [pod\_identity\_alb\_arn](#output\_pod\_identity\_alb\_arn) | ARN of the IAM role for EKS Pod Identity used by the ALB controller |
-| <a name="output_pod_identity_alb_id"></a> [pod\_identity\_alb\_id](#output\_pod\_identity\_alb\_id) | Unique ID of the IAM role for EKS Pod Identity used by the ALB controller |
-| <a name="output_pod_identity_alb_name"></a> [pod\_identity\_alb\_name](#output\_pod\_identity\_alb\_name) | Name of the IAM role for EKS Pod Identity used by the ALB controller |
-| <a name="output_pod_identity_cluster_autoscaler_arn"></a> [pod\_identity\_cluster\_autoscaler\_arn](#output\_pod\_identity\_cluster\_autoscaler\_arn) | ARN of the IAM role for EKS Pod Identity used by the Cluster Autoscaler |
-| <a name="output_pod_identity_cluster_autoscaler_id"></a> [pod\_identity\_cluster\_autoscaler\_id](#output\_pod\_identity\_cluster\_autoscaler\_id) | Unique ID of the IAM role for EKS Pod Identity used by the Cluster Autoscaler |
-| <a name="output_pod_identity_cluster_autoscaler_name"></a> [pod\_identity\_cluster\_autoscaler\_name](#output\_pod\_identity\_cluster\_autoscaler\_name) | Name of the IAM role for EKS Pod Identity used by the Cluster Autoscaler |
+| <a name="output_node_iam_role_arn"></a> [node\_iam\_role\_arn](#output\_node\_iam\_role\_arn) | IAM role ARN used by EKS Auto Mode nodes |
+| <a name="output_node_iam_role_name"></a> [node\_iam\_role\_name](#output\_node\_iam\_role\_name) | IAM role name used by EKS Auto Mode nodes |
 | <a name="output_private_subnet_cidr"></a> [private\_subnet\_cidr](#output\_private\_subnet\_cidr) | List of cidr\_blocks of private subnets |
 | <a name="output_private_subnet_ids"></a> [private\_subnet\_ids](#output\_private\_subnet\_ids) | List of IDs of private subnets |
 | <a name="output_public_subnet_cidr"></a> [public\_subnet\_cidr](#output\_public\_subnet\_cidr) | List of cidr\_blocks of public subnets |
@@ -157,8 +148,6 @@ No inputs.
 | <a name="output_secure_subnet_cidr"></a> [secure\_subnet\_cidr](#output\_secure\_subnet\_cidr) | List of cidr\_blocks of secure subnets |
 | <a name="output_secure_subnet_ids"></a> [secure\_subnet\_ids](#output\_secure\_subnet\_ids) | List of IDs of secure subnets |
 | <a name="output_spot_logs_cwl_id"></a> [spot\_logs\_cwl\_id](#output\_spot\_logs\_cwl\_id) | The IDs of the cloudwatch logs for Spot logging |
-| <a name="output_spot_node_group_arn"></a> [spot\_node\_group\_arn](#output\_spot\_node\_group\_arn) | ARN of the Spot EKS Node Group |
-| <a name="output_spot_node_group_id"></a> [spot\_node\_group\_id](#output\_spot\_node\_group\_id) | ID of the Spot EKS Node Group |
 | <a name="output_system_logs_cwl_id"></a> [system\_logs\_cwl\_id](#output\_system\_logs\_cwl\_id) | The IDs of the cloudwatch logs for VM system logs |
 | <a name="output_vpc_cidr_blocks"></a> [vpc\_cidr\_blocks](#output\_vpc\_cidr\_blocks) | The CIDR block of the VPC |
 | <a name="output_vpc_flow_logs_cwl_id"></a> [vpc\_flow\_logs\_cwl\_id](#output\_vpc\_flow\_logs\_cwl\_id) | The ID of the cloudwatch logs for VPC flow logs |

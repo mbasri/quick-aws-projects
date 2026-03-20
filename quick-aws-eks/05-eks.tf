@@ -2,7 +2,8 @@
 # Create EKS
 #---------------------------------------------------------------------------------------------------
 module "eks" {
-  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-eks?ref=v1.1.2"
+  # source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-eks?ref=v1.1.2"
+  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-eks"
 
   cluster_name    = local.eks_name
   cluster_version = "1.35"
@@ -22,9 +23,6 @@ module "eks" {
   eks_admin_principal_arn = [
     data.aws_caller_identity.current.arn
   ]
-
-  enable_autoscaler_pod_identity = true
-  enable_alb_pod_identity        = true
 
   tags = local.tags
 }
