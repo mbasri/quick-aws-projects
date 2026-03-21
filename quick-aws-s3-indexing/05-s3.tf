@@ -2,7 +2,7 @@
 # S3
 #---------------------------------------------------------------------------------------------------
 module "s3" {
-  source      = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-s3?ref=v1.4.2"
+  source      = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-s3?ref=v1"
   bucket_name = local.bucket_name
 
   kms_arn = module.kms.key_arn

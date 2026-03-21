@@ -2,7 +2,7 @@
 # SQS
 #---------------------------------------------------------------------------------------------------
 module "sqs" {
-  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-sqs?ref=v1.2.1"
+  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-sqs?ref=v1"
 
   sqs_name    = local.sqs_name
   description = local.description
@@ -32,7 +32,7 @@ module "sqs" {
 # SQS DLQ
 #---------------------------------------------------------------------------------------------------
 module "sqs-dlq" {
-  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-sqs?ref=v1.2.1"
+  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-sqs?ref=v1"
 
   sqs_name    = local.sqs_dlq_name
   description = local.description

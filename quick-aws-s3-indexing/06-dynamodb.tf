@@ -5,7 +5,7 @@
 # Create DynamoDB to store status of files to be converted to text
 #---------------------------------------------------------------------------------------------------
 module "dynamodb" {
-  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-dynamodb?ref=v1.3.1"
+  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-dynamodb?ref=v1"
 
   dynamodb_table_name = local.dynamodb_table_name
   description         = local.description

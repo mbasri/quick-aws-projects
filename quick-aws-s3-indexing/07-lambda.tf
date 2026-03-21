@@ -53,7 +53,7 @@ resource "aws_iam_policy" "lambda" {
 # Create Lambda function to convert files to text via AWS Services
 #---------------------------------------------------------------------------------------------------
 module "lambda" {
-  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-lambda?ref=v2.3.0"
+  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-lambda?ref=v2"
   #source = "../../../mbasri-terraform-aws-modules/terraform-aws-lambda"
 
   function_name = local.function_name
