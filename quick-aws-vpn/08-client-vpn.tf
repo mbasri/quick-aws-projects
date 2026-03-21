@@ -6,7 +6,7 @@ module "client-vpn" {
 
   description = local.description
 
-  kms_arn = module.kms.key_alias_arn
+  kms_arn = module.kms.key_arn
 
   client_vpn_name = local.client_vpn_name
 

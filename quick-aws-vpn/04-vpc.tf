@@ -6,7 +6,7 @@ module "vpc" {
 
   vpc_name = local.vpc_name
 
-  kms_arn = module.kms.key_alias_arn
+  kms_arn = module.kms.key_arn
 
   enable_nat_gateway = true
 

@@ -17,7 +17,7 @@ output "key_alias_arn" {
 }
 
 output "key_alias_name" {
-  description = "Name of the key alis"
+  description = "Name of the key alias"
   value       = module.kms.key_alias_name
 }
 

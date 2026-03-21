@@ -24,7 +24,7 @@ locals {
     "billing:environment"       = "dev",
 
     "security:compliance"     = "HIPAA",
-    "security:data-sensitity" = "1",
+    "security:data-sensitivity" = "1",
     "security:encryption"     = "true",
 
     "technical:terraform"                     = "true",
