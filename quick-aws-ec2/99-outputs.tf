@@ -7,7 +7,7 @@ output "key_arn" {
 }
 
 output "key_id" {
-  description = "Name of the key"
+  description = "The ID of the key"
   value       = module.kms.key_id
 }
 
@@ -45,7 +45,7 @@ output "vpc_cidr_blocks" {
 }
 
 output "nat_gateway_public_ips" {
-  description = "Private IP of NAT Gateway"
+  description = "Public IP of NAT Gateway"
   value       = module.vpc.nat_gateway_public_ips
 }
 

@@ -7,7 +7,7 @@ output "key_arn" {
 }
 
 output "key_id" {
-  description = "Name of the key"
+  description = "The ID of the key"
   value       = module.kms.key_id
 }
 

@@ -1,8 +1,8 @@
 #---------------------------------------------------------------------------------------------------
 # Save cloudwatch Agent configuration
-# https://docs.aws.amazon.com/fr_fr/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html
+# https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html
 #
-# https://docs.aws.amazon.com/fr_fr/AmazonCloudWatch/latest/monitoring/create-cloudwatch-agent-configuration-file-wizard.html
+# https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-cloudwatch-agent-configuration-file-wizard.html
 # ex: sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
 #
 # Used by user-data
