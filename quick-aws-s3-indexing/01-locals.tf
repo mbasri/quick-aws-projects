@@ -23,9 +23,9 @@ locals {
     "billing:application"       = "quick-aws-s3-indexing",
     "billing:environment"       = "dev",
 
-    "security:compliance"     = "HIPAA",
+    "security:compliance"       = "HIPAA",
     "security:data-sensitivity" = "1",
-    "security:encryption"     = "true",
+    "security:encryption"       = "true",
 
     "technical:terraform"                     = "true",
     "technical:terraform:scm"                 = "https://github.com/mbasri/quick-aws-projects",
