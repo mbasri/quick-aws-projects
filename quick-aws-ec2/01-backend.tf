@@ -1,5 +1,5 @@
 #---------------------------------------------------------------------------------------------------
-# Using multiple workspaces:
+# Terraform backend configuration for remote state management using Terraform Cloud
 #---------------------------------------------------------------------------------------------------
 terraform {
   backend "remote" {
