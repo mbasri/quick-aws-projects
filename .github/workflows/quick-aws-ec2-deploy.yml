@@ -1,0 +1,53 @@
+name: quick-aws-ec2 deploy
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'quick-aws-ec2/**'
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Starting environment'
+        required: true
+        type: choice
+        options:
+          - dev
+          - staging
+          - prod
+      promote:
+        description: 'Promote to next environments'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  # ── Deploy to selected environment ──
+  deploy:
+    uses: mbasri-actions/reusable-workflows/.github/workflows/terraform-deploy.yml@main
+    with:
+      environment: ${{ inputs.environment || 'dev' }}
+      working-directory: quick-aws-ec2
+    secrets: inherit
+
+  # ── Promote: dev → staging ──
+  promote-staging:
+    if: inputs.promote == true && inputs.environment == 'dev'
+    needs: deploy
+    uses: mbasri-actions/reusable-workflows/.github/workflows/terraform-deploy.yml@main
+    with:
+      environment: staging
+      working-directory: quick-aws-ec2
+    secrets: inherit
+
+  # ── Promote: staging → prod ──
+  promote-prod:
+    if: >-
+      inputs.promote == true &&
+      (inputs.environment == 'dev' || inputs.environment == 'staging')
+    needs: [deploy, promote-staging]
+    uses: mbasri-actions/reusable-workflows/.github/workflows/terraform-deploy.yml@main
+    with:
+      environment: prod
+      working-directory: quick-aws-ec2
+    secrets: inherit
