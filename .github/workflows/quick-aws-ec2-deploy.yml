@@ -13,16 +13,14 @@ on:
         type: choice
         options:
           - dev
-          - staging
-          - prod
+          - prd
       promote:
-        description: 'Promote to next environments'
+        description: 'Promote to next environment'
         required: false
         type: boolean
         default: false
 
 jobs:
-  # ── Deploy to selected environment ──
   deploy:
     uses: mbasri-actions/reusable-workflows/.github/workflows/terraform-deploy.yml@main
     with:
@@ -30,24 +28,11 @@ jobs:
       working-directory: quick-aws-ec2
     secrets: inherit
 
-  # ── Promote: dev → staging ──
-  promote-staging:
+  promote-prd:
     if: inputs.promote == true && inputs.environment == 'dev'
     needs: deploy
     uses: mbasri-actions/reusable-workflows/.github/workflows/terraform-deploy.yml@main
     with:
-      environment: staging
-      working-directory: quick-aws-ec2
-    secrets: inherit
-
-  # ── Promote: staging → prod ──
-  promote-prod:
-    if: >-
-      inputs.promote == true &&
-      (inputs.environment == 'dev' || inputs.environment == 'staging')
-    needs: [deploy, promote-staging]
-    uses: mbasri-actions/reusable-workflows/.github/workflows/terraform-deploy.yml@main
-    with:
-      environment: prod
+      environment: prd
       working-directory: quick-aws-ec2
     secrets: inherit
