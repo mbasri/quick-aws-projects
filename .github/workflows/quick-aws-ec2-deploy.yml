@@ -26,7 +26,10 @@ jobs:
     with:
       environment: ${{ inputs.environment || 'dev' }}
       working-directory: quick-aws-ec2
-    secrets: inherit
+    secrets:
+      GH_APP_ID: ${{ secrets.GH_APP_ID }}
+      GH_APP_PRIVATE_KEY: ${{ secrets.GH_APP_PRIVATE_KEY }}
+      TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
 
   promote-prd:
     if: inputs.promote == true && inputs.environment == 'dev'
@@ -35,4 +38,7 @@ jobs:
     with:
       environment: prd
       working-directory: quick-aws-ec2
-    secrets: inherit
+    secrets:
+      GH_APP_ID: ${{ secrets.GH_APP_ID }}
+      GH_APP_PRIVATE_KEY: ${{ secrets.GH_APP_PRIVATE_KEY }}
+      TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
