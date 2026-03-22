@@ -7,6 +7,14 @@ Terraform project which create S3 linked to a SQS queue to index S3 objects meta
 
 ## *Create and destroy the infrastructure*
 
+### 0. Prerequisites
+
+Set the AWS profile for local usage:
+
+```shell
+export AWS_PROFILE=lab
+```
+
 ### 1. Create infrastructure
 
 ```shell

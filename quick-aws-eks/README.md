@@ -7,6 +7,14 @@ Terraform project which create VPC, KMS and EKS resource on AWS from scratch.
 
 ## *Create and destroy the infrastructure*
 
+### 0. Prerequisites
+
+Set the AWS profile for local usage:
+
+```shell
+export AWS_PROFILE=lab
+```
+
 ### 1. Create infrastructure
 
 ```shell

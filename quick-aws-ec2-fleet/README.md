@@ -7,6 +7,14 @@ Terraform project which create VPC and Auto Scaling Group resource on AWS from s
 
 ## *Create and destroy the infrastructure*
 
+### 0. Prerequisites
+
+Set the AWS profile for local usage:
+
+```shell
+export AWS_PROFILE=lab
+```
+
 ### 1. Create infrastructure
 
 ```shell

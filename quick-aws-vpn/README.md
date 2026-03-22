@@ -7,6 +7,14 @@ Terraform project which create VPC and Client VPN resource on AWS from scratch.
 
 ## *Create and destroy the infrastructure*
 
+### 1. Prerequisites
+
+Set the AWS profile for local usage:
+
+```shell
+export AWS_PROFILE=lab
+```
+
 ### 2. Create certificate
 
 As mentioned in `97-datas.tf`, you need to create your own certificates for the VPN server and clients.
