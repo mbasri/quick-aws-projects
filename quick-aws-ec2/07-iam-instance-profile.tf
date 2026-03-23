@@ -9,3 +9,11 @@ module "iam-instance-profile" {
 
   tags = local.tags
 }
+
+module "iam-instance-profile2" {
+  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-iam-instance-profile?ref=v1"
+
+  iam_instance_profile_name = "${local.iam_instance_profile_name}-2"
+
+  tags = local.tags
+}

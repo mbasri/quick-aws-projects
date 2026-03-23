@@ -13,8 +13,6 @@ on:
         type: choice
         options:
           - dev
-          - ppd
-          - prd
       destroy:
         description: 'Destroy infrastructure'
         required: false
