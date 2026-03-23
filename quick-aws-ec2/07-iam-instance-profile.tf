@@ -19,6 +19,6 @@ module "iam-instance-profile2" {
 }
 
 module "iam-instance-profile3" {
-  source = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-iam-instance-profile?ref=v1"
+  source                    = "git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-iam-instance-profile?ref=v1"
   iam_instance_profile_name = "${local.iam_instance_profile_name}-3"
 }
