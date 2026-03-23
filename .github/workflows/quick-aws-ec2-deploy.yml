@@ -14,8 +14,8 @@ on:
         options:
           - dev
           - prd
-      promote:
-        description: 'Promote to next environment'
+      destroy:
+        description: 'Destroy infrastructure'
         required: false
         type: boolean
         default: false
@@ -25,20 +25,20 @@ permissions:
   contents: read
 
 jobs:
-  deploy:
+  deploy-dev:
     uses: mbasri-actions/reusable-workflows/.github/workflows/terraform-deploy.yml@main
     with:
       environment: ${{ inputs.environment || 'dev' }}
       working-directory: quick-aws-ec2
+      destroy: ${{ inputs.destroy || false }}
     secrets:
       GH_APP_ID: ${{ secrets.GH_APP_ID }}
       GH_APP_PRIVATE_KEY: ${{ secrets.GH_APP_PRIVATE_KEY }}
       TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
       AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
 
-  promote-prd:
-    if: inputs.promote == true && inputs.environment == 'dev'
-    needs: deploy
+  deploy-prd:
+    needs: deploy-dev
     uses: mbasri-actions/reusable-workflows/.github/workflows/terraform-deploy.yml@main
     with:
       environment: prd
