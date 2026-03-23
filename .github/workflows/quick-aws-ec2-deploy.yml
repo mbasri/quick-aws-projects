@@ -13,6 +13,7 @@ on:
         type: choice
         options:
           - dev
+          - ppd
           - prd
       destroy:
         description: 'Destroy infrastructure'
@@ -26,9 +27,24 @@ permissions:
 
 jobs:
   deploy-dev:
+    if: inputs.environment == 'dev' || inputs.environment == ''
     uses: mbasri-actions/reusable-workflows/.github/workflows/terraform-deploy.yml@main
     with:
-      environment: ${{ inputs.environment || 'dev' }}
+      environment: dev
+      working-directory: quick-aws-ec2
+      destroy: ${{ inputs.destroy || false }}
+    secrets:
+      GH_APP_ID: ${{ secrets.GH_APP_ID }}
+      GH_APP_PRIVATE_KEY: ${{ secrets.GH_APP_PRIVATE_KEY }}
+      TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+      AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
+
+  deploy-ppd:
+    if: always() && (needs.deploy-dev.result == 'success' || needs.deploy-dev.result == 'skipped') && inputs.environment != 'prd'
+    needs: deploy-dev
+    uses: mbasri-actions/reusable-workflows/.github/workflows/terraform-deploy.yml@main
+    with:
+      environment: ppd
       working-directory: quick-aws-ec2
       destroy: ${{ inputs.destroy || false }}
     secrets:
@@ -38,11 +54,13 @@ jobs:
       AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
 
   deploy-prd:
-    needs: deploy-dev
+    if: always() && (needs.deploy-ppd.result == 'success' || needs.deploy-ppd.result == 'skipped')
+    needs: deploy-ppd
     uses: mbasri-actions/reusable-workflows/.github/workflows/terraform-deploy.yml@main
     with:
       environment: prd
       working-directory: quick-aws-ec2
+      destroy: ${{ inputs.destroy || false }}
     secrets:
       GH_APP_ID: ${{ secrets.GH_APP_ID }}
       GH_APP_PRIVATE_KEY: ${{ secrets.GH_APP_PRIVATE_KEY }}
