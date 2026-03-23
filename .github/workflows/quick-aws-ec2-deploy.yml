@@ -30,7 +30,7 @@ jobs:
     if: inputs.environment == 'dev' || inputs.environment == ''
     concurrency:
       group: ${{ github.workflow }}-deploy-dev
-      #cancel-in-progress: true
+      cancel-in-progress: true
     uses: mbasri-actions/reusable-workflows/.github/workflows/terraform-deploy.yml@main
     with:
       environment: dev
