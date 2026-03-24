@@ -19,8 +19,8 @@ module "client-vpn" {
   client_cidr         = "10.10.0.0/20"
   self_service_portal = "enabled"
 
-  server_certificate_arn     = data.aws_acm_certificate.server.arn
-  root_certificate_chain_arn = data.aws_acm_certificate.client.arn
+  server_certificate_arn     = aws_acm_certificate.server.arn #data.aws_acm_certificate.server.arn
+  root_certificate_chain_arn = aws_acm_certificate.client.arn #data.aws_acm_certificate.client.arn
 
   tags = local.tags
 }

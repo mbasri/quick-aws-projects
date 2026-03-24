@@ -7,5 +7,6 @@ terraform {
 
   required_providers {
     aws = "6.27.0"
+    tls = "4.1.0"
   }
 }

@@ -128,6 +128,19 @@ output "security_group_description" {
 }
 
 #---------------------------------------------------------------------------------------------------
+# Certificates
+#---------------------------------------------------------------------------------------------------
+output "server_certificate_arn" {
+  description = "The ARN of the server certificate in ACM"
+  value       = aws_acm_certificate.server.arn
+}
+
+output "client_certificate_arn" {
+  description = "The ARN of the client certificate in ACM"
+  value       = aws_acm_certificate.client.arn
+}
+
+#---------------------------------------------------------------------------------------------------
 # Client VPN
 #---------------------------------------------------------------------------------------------------
 output "client_vpn_endpoint_arn" {
