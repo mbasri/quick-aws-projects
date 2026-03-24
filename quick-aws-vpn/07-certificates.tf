@@ -10,7 +10,7 @@ resource "tls_self_signed_cert" "ca" {
   private_key_pem = tls_private_key.ca.private_key_pem
 
   subject {
-    common_name  = "${local.name}-ca"
+    common_name = "${local.name}-ca"
   }
 
   validity_period_hours = 24 * 365
@@ -34,7 +34,7 @@ resource "tls_cert_request" "server" {
   private_key_pem = tls_private_key.server.private_key_pem
 
   subject {
-    common_name  = "${local.name}-server"
+    common_name = "${local.name}-server"
   }
 
   dns_names = ["server.net"]
@@ -80,7 +80,7 @@ resource "tls_cert_request" "client" {
   private_key_pem = tls_private_key.client.private_key_pem
 
   subject {
-    common_name  = "${local.name}-client"
+    common_name = "${local.name}-client"
   }
 
   dns_names = ["client.net"]
