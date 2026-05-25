@@ -12,6 +12,7 @@ locals {
   security_group_name       = local.name
   iam_instance_profile_name = local.name
   instance_name             = local.name
+  
   ssm_parameter_name        = local.name
 
   tags = {
