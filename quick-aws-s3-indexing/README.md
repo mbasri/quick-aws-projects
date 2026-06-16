@@ -1,9 +1,9 @@
 <!-- BEGIN_TF_DOCS -->
-# Quick AWS EC2
+# Quick AWS S3 Indexing
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Terraform project which create S3 linked to a SQS queue to index S3 objects metadata in the queue. The project also creates a Lambda function which is triggered by new messages in the SQS queue.
+Terraform project which creates an S3 bucket linked to an SQS queue to index S3 object metadata. A Lambda function is triggered by new messages in the SQS queue to process the events.
 
 ## *Create and destroy the infrastructure*
 
@@ -19,7 +19,7 @@ export AWS_PROFILE=lab
 
 ```shell
 git clone https://github.com/mbasri/quick-aws-projects.git
-cd quick-aws-s3-indexing
+cd quick-aws-projects/quick-aws-s3-indexing
 terraform init
 terraform apply
 ```
@@ -51,12 +51,12 @@ GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -o ../tmp.d/bootstrap main.go; sa
 
 ```shell
 git clone https://github.com/mbasri/quick-aws-projects.git
-cd quick-aws-s3-indexing
+cd quick-aws-projects/quick-aws-s3-indexing
 terraform init
 terraform destroy
 ```
 
-### 4. Build Go Lambda function locally
+### 5. Build Go Lambda function locally
 
 ```shell
 git clone https://github.com/mbasri/quick-aws-projects.git

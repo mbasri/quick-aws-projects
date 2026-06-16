@@ -3,7 +3,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Terraform project which create VPC and Client VPN resource on AWS from scratch.
+Terraform project which creates a VPC and Client VPN on AWS from scratch.
 
 ## *Create and destroy the infrastructure*
 
@@ -41,7 +41,7 @@ terraform destroy
 
 And then remove the certificates created in step 2
 
-## Generate docs
+## *Generate docs*
 
 ```shell
 terraform-docs -c .terraform-docs.yml .
@@ -113,11 +113,11 @@ No inputs.
 | <a name="output_vpc_flow_logs_cwl_id"></a> [vpc\_flow\_logs\_cwl\_id](#output\_vpc\_flow\_logs\_cwl\_id) | The ID of the cloudwatch logs for VPC flow logs |
 | <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | The ID of the VPC |
 
-## Author
+## *Author*
 
 * [**Mohamed BASRI**](https://github.com/mbasri)
 
-## License
+## *License*
 
 This is free and unencumbered software released into the public domain - see the [LICENSE](./LICENSE) file for details
 

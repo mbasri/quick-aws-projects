@@ -3,7 +3,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Terraform project which create VPC and EC2 resource on AWS from scratch.
+Terraform project which creates a VPC and EC2 instance on AWS from scratch.
 
 ## *Create and destroy the infrastructure*
 
@@ -37,7 +37,7 @@ terraform destroy
 
 ### 1. Connect to the EC2 instance
 
-See the Terrafom output 'ssm_session'
+See the Terraform output 'ssm_session'
 
 ### 2. Run a proxy server
 

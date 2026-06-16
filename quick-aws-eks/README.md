@@ -3,7 +3,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Terraform project which create VPC, KMS and EKS resource on AWS from scratch.
+Terraform project which creates a VPC, KMS key and EKS cluster on AWS from scratch.
 
 ## *Create and destroy the infrastructure*
 

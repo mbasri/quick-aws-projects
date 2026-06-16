@@ -15,6 +15,12 @@ This repository contains several ready-to-use Terraform templates for quickly de
 - **quick-aws-eks**  
   Deploys a complete EKS cluster with VPC, KMS, access management, and sample deployments for Kubernetes tools (ArgoCD, Cluster Autoscaler, etc.).
 
+- **quick-aws-s3-indexing**  
+  Deploys an S3 bucket linked to an SQS queue and a Lambda function that indexes S3 object metadata on upload.
+
+- **quick-aws-vpc-link-to-cloudflare**  
+  Deploys a VPC and an EC2 instance configured as a proxy to link a private AWS VPC to Cloudflare.
+
 - **quick-aws-vpn**  
   Deploys a VPC and an AWS Client VPN, with support for custom certificates.
 
