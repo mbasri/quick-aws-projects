@@ -10,6 +10,46 @@ module "vpc" {
 
   enable_nat_gateway = true
 
+  public_acl_ingress = {
+    "998" = {
+      protocol    = "udp"
+      rule_action = "allow"
+      from_port   = 1024
+      to_port     = 65535
+      cidr_block  = "0.0.0.0/0"
+    }
+  }
+
+  public_acl_egress = {
+    "998" = {
+      protocol    = "udp"
+      rule_action = "allow"
+      from_port   = 1024
+      to_port     = 65535
+      cidr_block  = "0.0.0.0/0"
+    }
+  }
+
+  private_acl_ingress = {
+    "998" = {
+      protocol    = "udp"
+      rule_action = "allow"
+      from_port   = 1024
+      to_port     = 65535
+      cidr_block  = "0.0.0.0/0"
+    }
+  }
+
+  private_acl_egress = {
+    "998" = {
+      protocol    = "udp"
+      rule_action = "allow"
+      from_port   = 1024
+      to_port     = 65535
+      cidr_block  = "0.0.0.0/0"
+    }
+  }
+
   enable_system_logs = true
   enable_spot_logs   = true
 

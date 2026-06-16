@@ -3,7 +3,11 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Terraform project which creates a VPC and an EC2 instance configured as a proxy to link a private AWS VPC to Cloudflare.
+Terraform project which creates a VPC and an EC2 instance running [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/) to expose private AWS resources through Cloudflare without opening any inbound port.
+
+## *Network flows*
+
+> **Note:** cloudflared connects outbound on UDP 7844 (QUIC, preferred) and falls back to TCP 443. See [Cloudflare Tunnel firewall requirements](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/deploy-tunnels/tunnel-with-firewall/).
 
 ## *Create and destroy the infrastructure*
 

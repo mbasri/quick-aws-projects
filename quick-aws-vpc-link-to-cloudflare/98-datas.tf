@@ -8,7 +8,7 @@ data "aws_ami" "latest" {
 
   filter {
     name   = "name"
-    values = ["al2023-ami-*-kernel-6.1-arm64"]
+    values = ["al2023-ami-2023*-kernel-6.1-arm64"]
   }
 
   filter {
@@ -42,5 +42,10 @@ data "cloudinit_config" "main" {
     content = templatefile("${path.module}/scripts.d/user-data.d/02-tagger.sh.tpl", {
       region = local.region
     })
+  }
+
+  part {
+    content_type = "text/x-shellscript"
+    content      = file("${path.module}/scripts.d/user-data.d/03-web.sh.tpl")
   }
 }

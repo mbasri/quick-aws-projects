@@ -25,3 +25,4 @@ sudo cloud-init-per once install_cloudwatch_agent rpm -U --replacepkgs ./amazon-
 sudo cloud-init-per once remove_cloudwatch_agent_rpm rm -f amazon-cloudwatch-agent.rpm
 
 sudo cloud-init-per always start_cloudwatch_agent /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c ssm:${ssm_parameter_name} -s
+
