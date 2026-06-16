@@ -9,10 +9,22 @@ Terraform project which creates a VPC, KMS key and EKS cluster on AWS from scrat
 
 ### 0. Prerequisites
 
+Configure the AWS profile:
+
+```shell
+aws configure --profile lab
+```
+
 Set the AWS profile for local usage:
 
 ```shell
 export AWS_PROFILE=lab
+```
+
+Log in to Terraform Cloud:
+
+```shell
+terraform login
 ```
 
 ### 1. Create infrastructure
@@ -20,6 +32,8 @@ export AWS_PROFILE=lab
 ```shell
 git clone https://github.com/mbasri/quick-aws-projects.git
 cd quick-aws-projects/quick-aws-eks
+terraform workspace new quick-aws-eks-dev 2>/dev/null
+terraform workspace select quick-aws-eks-dev
 terraform init
 terraform apply
 ```
@@ -29,6 +43,8 @@ terraform apply
 ```shell
 git clone https://github.com/mbasri/quick-aws-projects.git
 cd quick-aws-projects/quick-aws-eks
+terraform workspace new quick-aws-eks-dev 2>/dev/null
+terraform workspace select quick-aws-eks-dev
 terraform init
 terraform destroy
 ```

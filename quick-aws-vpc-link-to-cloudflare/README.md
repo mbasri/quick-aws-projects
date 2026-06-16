@@ -9,10 +9,22 @@ Terraform project which creates a VPC and an EC2 instance configured as a proxy 
 
 ### 0. Prerequisites
 
+Configure the AWS profile:
+
+```shell
+aws configure --profile lab
+```
+
 Set the AWS profile for local usage:
 
 ```shell
 export AWS_PROFILE=lab
+```
+
+Log in to Terraform Cloud:
+
+```shell
+terraform login
 ```
 
 ### 1. Create infrastructure
@@ -20,6 +32,8 @@ export AWS_PROFILE=lab
 ```shell
 git clone https://github.com/mbasri/quick-aws-projects.git
 cd quick-aws-projects/quick-aws-vpc-link-to-cloudflare
+terraform workspace new quick-aws-vpc-link-to-cloudflare-dev 2>/dev/null
+terraform workspace select quick-aws-vpc-link-to-cloudflare-dev
 terraform init
 terraform apply
 ```
@@ -29,6 +43,8 @@ terraform apply
 ```shell
 git clone https://github.com/mbasri/quick-aws-projects.git
 cd quick-aws-projects/quick-aws-vpc-link-to-cloudflare
+terraform workspace new quick-aws-vpc-link-to-cloudflare-dev 2>/dev/null
+terraform workspace select quick-aws-vpc-link-to-cloudflare-dev
 terraform init
 terraform destroy
 ```

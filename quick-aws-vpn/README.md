@@ -9,10 +9,22 @@ Terraform project which creates a VPC and Client VPN on AWS from scratch.
 
 ### 1. Prerequisites
 
+Configure the AWS profile:
+
+```shell
+aws configure --profile lab
+```
+
 Set the AWS profile for local usage:
 
 ```shell
 export AWS_PROFILE=lab
+```
+
+Log in to Terraform Cloud:
+
+```shell
+terraform login
 ```
 
 ### 2. Create certificate
@@ -25,6 +37,8 @@ You can use this project to generate certificates: [generate-custom-certificates
 ```shell
 git clone https://github.com/mbasri/quick-aws-projects.git
 cd quick-aws-projects/quick-aws-vpn
+terraform workspace new quick-aws-vpn-dev 2>/dev/null
+terraform workspace select quick-aws-vpn-dev
 terraform init
 terraform apply -target module.vpc
 terraform apply
@@ -35,6 +49,8 @@ terraform apply
 ```shell
 git clone https://github.com/mbasri/quick-aws-projects.git
 cd quick-aws-projects/quick-aws-vpn
+terraform workspace new quick-aws-vpn-dev 2>/dev/null
+terraform workspace select quick-aws-vpn-dev
 terraform init
 terraform destroy
 ```

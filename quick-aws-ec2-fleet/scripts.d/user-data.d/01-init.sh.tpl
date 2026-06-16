@@ -20,7 +20,7 @@ sudo cloud-init-per once remove_awscliv2_zip_file rm -rf awscliv2.zip aws
 #---------------------------------------------------------------------------------------------------
 sudo cloud-init-per once get_collecd dnf install -y collectd
 
-sudo cloud-init-per once get_cloudwatch_agent wget https://s3.amazonaws.com/amazoncloudwatch-agent/centos/amd64/latest/amazon-cloudwatch-agent.rpm
+sudo cloud-init-per once get_cloudwatch_agent wget https://s3.amazonaws.com/amazoncloudwatch-agent/centos/arm64/latest/amazon-cloudwatch-agent.rpm
 sudo cloud-init-per once install_cloudwatch_agent rpm -U --replacepkgs ./amazon-cloudwatch-agent.rpm
 sudo cloud-init-per once remove_cloudwatch_agent_rpm rm -f amazon-cloudwatch-agent.rpm
 
