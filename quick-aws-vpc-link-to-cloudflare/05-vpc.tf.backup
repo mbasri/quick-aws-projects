@@ -8,7 +8,7 @@ module "vpc" {
 
   kms_arn = module.kms.key_arn
 
-  enable_ssm_endpoint = true
+  enable_ssm_endpoint = false
 
   enable_nat_gateway = true
 
@@ -19,28 +19,28 @@ module "vpc" {
       from_port   = 80
       to_port     = 80
       cidr_block  = local.vpc_cidr
-    },
+    }
     "110" = {
       protocol    = "tcp"
       rule_action = "allow"
       from_port   = 443
       to_port     = 443
       cidr_block  = local.vpc_cidr
-    },
+    }
     "120" = {
       protocol    = "tcp"
       rule_action = "allow"
       from_port   = 7844
       to_port     = 7844
       cidr_block  = local.vpc_cidr
-    },
+    }
     "130" = {
       protocol    = "udp"
       rule_action = "allow"
       from_port   = 7844
       to_port     = 7844
       cidr_block  = local.vpc_cidr
-    },
+    }
     "998" = {
       protocol    = "udp"
       rule_action = "allow"
@@ -139,7 +139,7 @@ module "vpc" {
   enable_system_logs = true
   enable_spot_logs   = true
 
-  enable_cloudwatch_vpc_flow_logs = true
+  enable_cloudwatch_vpc_flow_logs = false
   bucket_arn_vpc_flow_logs        = null #"arn:aws:s3:::<BUCKET_NAME>"
   bucket_arn_resolvers_logs       = null #"arn:aws:s3:::<BUCKET_NAME>"
 
