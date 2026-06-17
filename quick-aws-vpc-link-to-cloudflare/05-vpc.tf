@@ -8,7 +8,7 @@ module "vpc" {
 
   kms_arn = module.kms.key_arn
 
-  enable_ssm_endpoint = true
+  enable_ssm_endpoint = false
 
   enable_nat_gateway = true
 
@@ -148,7 +148,7 @@ module "vpc" {
   enable_system_logs = true
   enable_spot_logs   = true
 
-  enable_cloudwatch_vpc_flow_logs = true
+  enable_cloudwatch_vpc_flow_logs = false
   bucket_arn_vpc_flow_logs        = null #"arn:aws:s3:::<BUCKET_NAME>"
   bucket_arn_resolvers_logs       = null #"arn:aws:s3:::<BUCKET_NAME>"
 
