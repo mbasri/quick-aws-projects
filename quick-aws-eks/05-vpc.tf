@@ -10,6 +10,102 @@ module "vpc" {
 
   enable_nat_gateway = true
 
+  public_acl_ingress = {
+    "100" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 80
+      to_port     = 80
+      cidr_block  = "0.0.0.0/0"
+    }
+    "110" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 443
+      to_port     = 443
+      cidr_block  = "0.0.0.0/0"
+    }
+    "999" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 1024
+      to_port     = 65535
+      cidr_block  = "0.0.0.0/0"
+    }
+  }
+
+  public_acl_egress = {
+    "100" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 80
+      to_port     = 80
+      cidr_block  = "0.0.0.0/0"
+    }
+    "110" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 443
+      to_port     = 443
+      cidr_block  = "0.0.0.0/0"
+    }
+    "999" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 1024
+      to_port     = 65535
+      cidr_block  = "0.0.0.0/0"
+    }
+  }
+
+  private_acl_ingress = {
+    "100" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 80
+      to_port     = 80
+      cidr_block  = "10.0.0.0/22"
+    }
+    "110" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 443
+      to_port     = 443
+      cidr_block  = "10.0.0.0/22"
+    }
+    "999" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 1024
+      to_port     = 65535
+      cidr_block  = "0.0.0.0/0"
+    }
+  }
+
+  private_acl_egress = {
+    "100" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 80
+      to_port     = 80
+      cidr_block  = "0.0.0.0/0"
+    }
+    "110" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 443
+      to_port     = 443
+      cidr_block  = "0.0.0.0/0"
+    }
+    "999" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 1024
+      to_port     = 65535
+      cidr_block  = "10.0.0.0/22"
+    }
+  }
+
   enable_system_logs = true
   enable_spot_logs   = true
 

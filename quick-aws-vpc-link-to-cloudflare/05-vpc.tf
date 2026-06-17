@@ -8,11 +8,41 @@ module "vpc" {
 
   kms_arn = module.kms.key_arn
 
+  enable_ssm_endpoint = true
+
   enable_nat_gateway = true
 
   public_acl_ingress = {
+    "100" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 443
+      to_port     = 443
+      cidr_block  = local.vpc_cidr
+    }
+    "120" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 7844
+      to_port     = 7844
+      cidr_block  = local.vpc_cidr
+    }
+    "130" = {
+      protocol    = "udp"
+      rule_action = "allow"
+      from_port   = 7844
+      to_port     = 7844
+      cidr_block  = local.vpc_cidr
+    }
     "998" = {
       protocol    = "udp"
+      rule_action = "allow"
+      from_port   = 1024
+      to_port     = 65535
+      cidr_block  = "0.0.0.0/0"
+    }
+    "999" = {
+      protocol    = "tcp"
       rule_action = "allow"
       from_port   = 1024
       to_port     = 65535
@@ -21,6 +51,52 @@ module "vpc" {
   }
 
   public_acl_egress = {
+    "100" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 443
+      to_port     = 443
+      cidr_block  = "0.0.0.0/0"
+    },
+    "120" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 7844
+      to_port     = 7844
+      cidr_block  = "0.0.0.0/0"
+    }
+    "130" = {
+      protocol    = "udp"
+      rule_action = "allow"
+      from_port   = 7844
+      to_port     = 7844
+      cidr_block  = "0.0.0.0/0"
+    }
+    "998" = {
+      protocol    = "udp"
+      rule_action = "allow"
+      from_port   = 1024
+      to_port     = 65535
+      cidr_block  = local.vpc_cidr
+    }
+    "999" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 1024
+      to_port     = 65535
+      cidr_block  = local.vpc_cidr
+    }
+  }
+
+  private_acl_ingress = {
+    "100" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 443
+      to_port     = 443
+      cidr_block  = "0.0.0.0/0"
+    }
+    
     "998" = {
       protocol    = "udp"
       rule_action = "allow"
@@ -28,11 +104,8 @@ module "vpc" {
       to_port     = 65535
       cidr_block  = "0.0.0.0/0"
     }
-  }
-
-  private_acl_ingress = {
-    "998" = {
-      protocol    = "udp"
+    "999" = {
+      protocol    = "tcp"
       rule_action = "allow"
       from_port   = 1024
       to_port     = 65535
@@ -41,23 +114,45 @@ module "vpc" {
   }
 
   private_acl_egress = {
-    "998" = {
+    "100" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 443
+      to_port     = 443
+      cidr_block  = "0.0.0.0/0"
+    }
+    "120" = {
+      protocol    = "tcp"
+      rule_action = "allow"
+      from_port   = 7844
+      to_port     = 7844
+      cidr_block  = "0.0.0.0/0"
+    }
+    "130" = {
       protocol    = "udp"
+      rule_action = "allow"
+      from_port   = 7844
+      to_port     = 7844
+      cidr_block  = "0.0.0.0/0"
+    }
+    "999" = {
+      protocol    = "tcp"
       rule_action = "allow"
       from_port   = 1024
       to_port     = 65535
-      cidr_block  = "0.0.0.0/0"
+      cidr_block  = local.vpc_cidr
     }
+
   }
 
   enable_system_logs = true
   enable_spot_logs   = true
 
-  enable_cloudwatch_vpc_flow_logs = false
+  enable_cloudwatch_vpc_flow_logs = true
   bucket_arn_vpc_flow_logs        = null #"arn:aws:s3:::<BUCKET_NAME>"
   bucket_arn_resolvers_logs       = null #"arn:aws:s3:::<BUCKET_NAME>"
 
-  vpc_cidr = "10.0.0.0/24"
+  vpc_cidr = local.vpc_cidr
 
   availability_zones = ["eu-west-3a", "eu-west-3b"]
 

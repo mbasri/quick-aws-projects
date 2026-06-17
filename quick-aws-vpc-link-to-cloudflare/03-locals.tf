@@ -7,6 +7,8 @@ locals {
 
   description = "Quick AWS VPC Link to Cloudflare"
 
+  vpc_cidr = "10.0.0.0/24"
+
   kms_name                  = local.name
   vpc_name                  = local.name
   security_group_name       = local.name

@@ -57,7 +57,9 @@ terraform destroy
 
 ### 1. Connect to the EC2 instance
 
-See the Terraform output 'ssm_session'
+```shell
+aws --profile lab --region eu-west-3 ssm start-session --target $(aws --profile lab --region eu-west-3 ec2 describe-instances --filters "Name=tag:Name,Values=quick-aws-vpc-link-to-cloudflare" "Name=instance-state-name,Values=running" --query "Reservations[0].Instances[0].InstanceId" --output text)
+```
 
 ### 2. Run a proxy server
 
