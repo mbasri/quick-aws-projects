@@ -8,3 +8,9 @@ provider "aws" {
     tags = local.tags
   }
 }
+
+#---------------------------------------------------------------------------------------------------
+# Cloudflare Provider
+# Credentials via CLOUDFLARE_API_TOKEN environment variable — never hard-coded
+#---------------------------------------------------------------------------------------------------
+provider "cloudflare" {}

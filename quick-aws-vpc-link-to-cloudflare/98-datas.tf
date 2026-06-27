@@ -48,4 +48,12 @@ data "cloudinit_config" "main" {
     content_type = "text/x-shellscript"
     content      = file("${path.module}/scripts.d/user-data.d/03-web.sh.tpl")
   }
+
+  part {
+    content_type = "text/x-shellscript"
+    content = templatefile("${path.module}/scripts.d/user-data.d/04-cloudflared.sh.tpl", {
+      region                           = local.region
+      ssm_cloudflare_tunnel_token_name = local.cloudflare_tunnel_ssm_param_name
+    })
+  }
 }

@@ -31,6 +31,29 @@ Log in to Terraform Cloud:
 terraform login
 ```
 
+Configure the Cloudflare credentials — create `~/.cloudflare/.env` if it does not exist yet:
+
+```shell
+mkdir -p ~/.cloudflare
+cat > ~/.cloudflare/.env << 'EOF'
+export CLOUDFLARE_API_TOKEN="<your_api_token>"
+export TF_VAR_cloudflare_account_id="<your_account_id>"
+EOF
+chmod 600 ~/.cloudflare/.env
+```
+
+> **How to get these values:**
+> - `CLOUDFLARE_API_TOKEN` → Cloudflare dashboard > My Profile > API Tokens > Create Token with the following permissions:
+>   - `Cloudflare Tunnel` : `Edit`
+>   - `Account Settings` : `Read`
+> - `TF_VAR_cloudflare_account_id` → visible in the Cloudflare dashboard URL: `https://dash.cloudflare.com/<account_id>/...`
+
+Source the credentials before running Terraform:
+
+```shell
+source ~/.cloudflare/.env
+```
+
 ### 1. Create infrastructure
 
 ```shell

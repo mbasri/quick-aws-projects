@@ -7,7 +7,7 @@
 #
 # Used by user-data
 #---------------------------------------------------------------------------------------------------
-resource "aws_ssm_parameter" "main" {
+resource "aws_ssm_parameter" "cloudwatch-agent-config" {
   name        = local.ssm_parameter_name
   description = local.description
   type        = "String"
@@ -16,4 +16,19 @@ resource "aws_ssm_parameter" "main" {
   })
   tags = merge(local.tags, tomap({ "Name" = local.ssm_parameter_name }))
   tier = "Advanced"
+}
+
+#---------------------------------------------------------------------------------------------------
+# Cloudflare tunnel token — stored as SecureString encrypted with the project KMS key
+# The EC2 instance retrieves this at boot via: aws ssm get-parameter --with-decryption
+# The token itself never appears in user data or Terraform plan output
+#---------------------------------------------------------------------------------------------------
+resource "aws_ssm_parameter" "cloudflare-tunnel-token" {
+  name        = local.cloudflare_tunnel_ssm_param_name
+  description = "Cloudflare tunnel connector token for ${local.description}"
+  type        = "SecureString"
+  key_id      = module.kms.key_arn
+  value       = data.cloudflare_zero_trust_tunnel_cloudflared_token.main.token
+  tags        = merge(local.tags, tomap({ "Name" = local.cloudflare_tunnel_ssm_param_name }))
+  tier        = "Standard"
 }

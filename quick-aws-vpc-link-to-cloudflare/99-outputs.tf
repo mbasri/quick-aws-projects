@@ -224,6 +224,19 @@ output "instance_spot_request_id" {
 }
 
 #---------------------------------------------------------------------------------------------------
+# Cloudflare
+#---------------------------------------------------------------------------------------------------
+output "cloudflare_tunnel_id" {
+  description = "The ID of the Cloudflare tunnel"
+  value       = cloudflare_zero_trust_tunnel_cloudflared.main.id
+}
+
+output "cloudflare_tunnel_cname" {
+  description = "Tunnel CNAME — add a CNAME DNS record pointing to this value to route traffic"
+  value       = "${cloudflare_zero_trust_tunnel_cloudflared.main.id}.cfargotunnel.com"
+}
+
+#---------------------------------------------------------------------------------------------------
 # Others
 #---------------------------------------------------------------------------------------------------
 output "ssm_session" {

@@ -20,19 +20,68 @@ output:
   mode: inject
   template: |-
     <!-- BEGIN_TF_DOCS -->
-    # Quick AWS EC2
+    # Quick AWS VPC Link to Cloudflare
 
     [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-    Terraform project which create VPC and EC2 resource on AWS from scratch.
+    Terraform project which creates a VPC and an EC2 instance running [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/) to expose private AWS resources through Cloudflare without opening any inbound port.
+
+    ## *Network flows*
+
+    > **Note:** cloudflared connects outbound on UDP 7844 (QUIC, preferred) and falls back to TCP 443. See [Cloudflare Tunnel firewall requirements](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/deploy-tunnels/tunnel-with-firewall/).
 
     ## *Create and destroy the infrastructure*
+
+    ### 0. Prerequisites
+
+    Configure the AWS profile:
+
+    ```shell
+    aws configure --profile lab
+    ```
+
+    Set the AWS profile for local usage:
+
+    ```shell
+    export AWS_PROFILE=lab
+    ```
+
+    Log in to Terraform Cloud:
+
+    ```shell
+    terraform login
+    ```
+
+    Configure the Cloudflare credentials — create `~/.cloudflare/.env` if it does not exist yet:
+
+    ```shell
+    mkdir -p ~/.cloudflare
+    cat > ~/.cloudflare/.env << 'EOF'
+    export CLOUDFLARE_API_TOKEN="<your_api_token>"
+    export TF_VAR_cloudflare_account_id="<your_account_id>"
+    EOF
+    chmod 600 ~/.cloudflare/.env
+    ```
+
+    > **How to get these values:**
+    > - `CLOUDFLARE_API_TOKEN` → Cloudflare dashboard > My Profile > API Tokens > Create Token with the following permissions:
+    >   - `Cloudflare Tunnel` : `Edit`
+    >   - `Account Settings` : `Read`
+    > - `TF_VAR_cloudflare_account_id` → visible in the Cloudflare dashboard URL: `https://dash.cloudflare.com/<account_id>/...`
+
+    Source the credentials before running Terraform:
+
+    ```shell
+    source ~/.cloudflare/.env
+    ```
 
     ### 1. Create infrastructure
 
     ```shell
     git clone https://github.com/mbasri/quick-aws-projects.git
     cd quick-aws-projects/quick-aws-vpc-link-to-cloudflare
+    terraform workspace new quick-aws-vpc-link-to-cloudflare-dev 2>/dev/null
+    terraform workspace select quick-aws-vpc-link-to-cloudflare-dev
     terraform init
     terraform apply
     ```
@@ -42,6 +91,8 @@ output:
     ```shell
     git clone https://github.com/mbasri/quick-aws-projects.git
     cd quick-aws-projects/quick-aws-vpc-link-to-cloudflare
+    terraform workspace new quick-aws-vpc-link-to-cloudflare-dev 2>/dev/null
+    terraform workspace select quick-aws-vpc-link-to-cloudflare-dev
     terraform init
     terraform destroy
     ```
@@ -50,17 +101,19 @@ output:
 
     ### 1. Connect to the EC2 instance
 
-    See the Terrafom output 'ssm_session'
+    ```shell
+    aws --profile lab --region eu-west-3 ssm start-session --target $(aws --profile lab --region eu-west-3 ec2 describe-instances --filters "Name=tag:Name,Values=quick-aws-vpc-link-to-cloudflare" "Name=instance-state-name,Values=running" --query "Reservations[0].Instances[0].InstanceId" --output text)
+    ```
 
     ### 2. Run a proxy server
 
-    ```shell 
+    ```shell
     chmod +x run-proxy
     ./run-proxy
     ```
 
     ## *Generate docs*
-    
+
     ```shell
     terraform-docs -c .terraform-docs.yml .
     ```

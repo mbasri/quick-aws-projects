@@ -16,22 +16,28 @@ locals {
   instance_name             = local.name
   ssm_parameter_name        = local.name
 
+  cloudflare_tunnel_name           = local.name
+  cloudflare_tunnel_ssm_param_name = "${local.name}-tunnel-token"
+  cloudflare_tunnel_iam_policy_name = "${local.iam_instance_profile_name}-tunnel-token"
+
   tags = {
     "Name"        = local.name,
     "Description" = local.description,
 
-    "billing:organisation"      = "mbasri",
-    "billing:organisation-unit" = "labs",
-    "billing:application"       = local.name,
-    "billing:environment"       = "dev",
+    "BillingOrganisation"     = "mbasri",
+    "BillingOrganisationUnit" = "labs",
+    "BillingApplication"      = local.name,
+    "BillingEnvironment"      = "dev",
 
-    "security:compliance"       = "HIPAA",
-    "security:data-sensitivity" = "1",
-    "security:encryption"       = "true",
+    "SecurityCompliance"      = "HIPAA",
+    "SecurityDataSensitivity" = "1",
+    "SecurityEncryption"      = "true",
 
-    "technical:terraform"                     = "true",
-    "technical:terraform:scm"                 = "https://github.com/mbasri/quick-aws-projects",
-    "technical:terraform:required-version"    = "1.14.3",
-    "technical:provider:aws:required-version" = "6.27.0"
+    "TechnicalTerraform"                    = "true",
+    "TechnicalTerraformSCM"                 = "https://github.com/mbasri/quick-aws-projects",
+    "TechnicalTerraformRequiredVersion"     = "1.14.3",
+    "TechnicalProviderAWSRequiredVersion"        = "6",
+    "TechnicalProviderCloudflareRequiredVersion" = "5",
+    "TechnicalProviderRandomRequiredVersion"     = "3"
   }
 }

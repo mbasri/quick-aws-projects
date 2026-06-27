@@ -16,18 +16,18 @@ locals {
     "Name"        = local.name,
     "Description" = "Quick AWS VPN",
 
-    "billing:organisation"      = "mbasri",
-    "billing:organisation-unit" = "labs",
-    "billing:application"       = "quick-aws-vpn",
-    "billing:environment"       = "dev",
+    "BillingOrganisation"     = "mbasri",
+    "BillingOrganisationUnit" = "labs",
+    "BillingApplication"      = "quick-aws-vpn",
+    "BillingEnvironment"      = "dev",
 
-    "security:compliance"       = "HIPAA",
-    "security:data-sensitivity" = "1",
-    "security:encryption"       = "true",
+    "SecurityCompliance"      = "HIPAA",
+    "SecurityDataSensitivity" = "1",
+    "SecurityEncryption"      = "true",
 
-    "technical:terraform"                     = "true",
-    "technical:terraform:scm"                 = "https://github.com/mbasri/quick-aws-projects.git",
-    "technical:terraform:required-version"    = "1.14.3",
-    "technical:provider:aws:required-version" = "6.27.0"
+    "TechnicalTerraform"                  = "true",
+    "TechnicalTerraformSCM"               = "https://github.com/mbasri/quick-aws-projects.git",
+    "TechnicalTerraformRequiredVersion"   = "1.14.3",
+    "TechnicalProviderAWSRequiredVersion" = "6.27.0"
   }
 }
