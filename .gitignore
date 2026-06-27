@@ -31,3 +31,6 @@ bootstrap
 
 # Runners
 run-proxy
+
+# Claude Code
+.claude

@@ -86,7 +86,7 @@ aws --profile lab --region eu-west-3 ssm start-session --target $(aws --profile 
 
 ### 2. Run a proxy server
 
-```shell 
+```shell
 chmod +x run-proxy
 ./run-proxy
 ```
@@ -102,43 +102,57 @@ terraform-docs -c .terraform-docs.yml .
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | 1.14.3 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.27.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 6 |
+| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | ~> 5 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | ~> 3 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.27.0 |
-| <a name="provider_cloudinit"></a> [cloudinit](#provider\_cloudinit) | 2.3.7 |
-| <a name="provider_local"></a> [local](#provider\_local) | 2.7.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.52.0 |
+| <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | 5.21.1 |
+| <a name="provider_cloudinit"></a> [cloudinit](#provider\_cloudinit) | 2.4.0 |
+| <a name="provider_local"></a> [local](#provider\_local) | 2.9.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.9.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_ec2"></a> [ec2](#module\_ec2) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-ec2 | v1.3.1 |
-| <a name="module_iam-instance-profile"></a> [iam-instance-profile](#module\_iam-instance-profile) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-iam-instance-profile | v1.3.1 |
-| <a name="module_kms"></a> [kms](#module\_kms) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-kms | v1.4.1 |
-| <a name="module_security-group"></a> [security-group](#module\_security-group) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-security-group | v1.3.1 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-vpc | v1.8.2 |
+| <a name="module_ec2"></a> [ec2](#module\_ec2) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-ec2 | v1 |
+| <a name="module_iam-instance-profile"></a> [iam-instance-profile](#module\_iam-instance-profile) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-iam-instance-profile | v1 |
+| <a name="module_kms"></a> [kms](#module\_kms) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-kms | v1 |
+| <a name="module_security-group"></a> [security-group](#module\_security-group) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-security-group | v1 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/mbasri-terraform-aws-modules/terraform-aws-vpc | v1 |
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aws_ssm_parameter.main](https://registry.terraform.io/providers/hashicorp/aws/6.27.0/docs/resources/ssm_parameter) | resource |
+| [aws_iam_policy.cloudflare-tunnel-token](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_ssm_parameter.cloudflare-tunnel-token](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.cloudwatch-agent-config](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter) | resource |
+| [cloudflare_zero_trust_tunnel_cloudflared.main](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_cloudflared) | resource |
+| [cloudflare_zero_trust_tunnel_cloudflared_route.vpc](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_cloudflared_route) | resource |
 | [local_file.run-proxy](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
-| [aws_ami.latest](https://registry.terraform.io/providers/hashicorp/aws/6.27.0/docs/data-sources/ami) | data source |
+| [random_id.tunnel_secret](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
+| [aws_ami.latest](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami) | data source |
+| [cloudflare_zero_trust_tunnel_cloudflared_token.main](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/zero_trust_tunnel_cloudflared_token) | data source |
 | [cloudinit_config.main](https://registry.terraform.io/providers/hashicorp/cloudinit/latest/docs/data-sources/config) | data source |
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_cloudflare_account_id"></a> [cloudflare\_account\_id](#input\_cloudflare\_account\_id) | Cloudflare Account ID — see README Prerequisites section for how to set this value | `string` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
+| <a name="output_cloudflare_tunnel_cname"></a> [cloudflare\_tunnel\_cname](#output\_cloudflare\_tunnel\_cname) | Tunnel CNAME — add a CNAME DNS record pointing to this value to route traffic |
+| <a name="output_cloudflare_tunnel_id"></a> [cloudflare\_tunnel\_id](#output\_cloudflare\_tunnel\_id) | The ID of the Cloudflare tunnel |
 | <a name="output_default_security_group_id"></a> [default\_security\_group\_id](#output\_default\_security\_group\_id) | The ID of the VPC default security group |
 | <a name="output_iam_instance_profile_arn"></a> [iam\_instance\_profile\_arn](#output\_iam\_instance\_profile\_arn) | The ARN of the IAM Instance Profile |
 | <a name="output_iam_instance_profile_id"></a> [iam\_instance\_profile\_id](#output\_iam\_instance\_profile\_id) | The ID of the IAM Instance Profile |
@@ -158,11 +172,11 @@ No inputs.
 | <a name="output_instance_subnet_id"></a> [instance\_subnet\_id](#output\_instance\_subnet\_id) | Subnet used by the instance |
 | <a name="output_instance_vpc_security_group_ids"></a> [instance\_vpc\_security\_group\_ids](#output\_instance\_vpc\_security\_group\_ids) | List of security group used by the instance |
 | <a name="output_key_alias_arn"></a> [key\_alias\_arn](#output\_key\_alias\_arn) | The Amazon Resource Name (ARN) of the key alias |
-| <a name="output_key_alias_name"></a> [key\_alias\_name](#output\_key\_alias\_name) | Name of the key alis |
+| <a name="output_key_alias_name"></a> [key\_alias\_name](#output\_key\_alias\_name) | Name of the key alias |
 | <a name="output_key_arn"></a> [key\_arn](#output\_key\_arn) | The Amazon Resource Name (ARN) of the key |
-| <a name="output_key_id"></a> [key\_id](#output\_key\_id) | Name of the key |
+| <a name="output_key_id"></a> [key\_id](#output\_key\_id) | The ID of the key |
 | <a name="output_key_policy"></a> [key\_policy](#output\_key\_policy) | The IAM resource policy set on the key |
-| <a name="output_nat_gateway_public_ips"></a> [nat\_gateway\_public\_ips](#output\_nat\_gateway\_public\_ips) | Private IP of NAT Gateway |
+| <a name="output_nat_gateway_public_ips"></a> [nat\_gateway\_public\_ips](#output\_nat\_gateway\_public\_ips) | Public IP of NAT Gateway |
 | <a name="output_private_subnet_cidr"></a> [private\_subnet\_cidr](#output\_private\_subnet\_cidr) | List of cidr\_blocks of private subnets |
 | <a name="output_private_subnet_ids"></a> [private\_subnet\_ids](#output\_private\_subnet\_ids) | List of IDs of private subnets |
 | <a name="output_public_subnet_cidr"></a> [public\_subnet\_cidr](#output\_public\_subnet\_cidr) | List of cidr\_blocks of public subnets |
